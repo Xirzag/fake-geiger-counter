@@ -31,7 +31,7 @@
         let counter = document.getElementById("counter")
         let audio = document.getElementById("audio")
 
-        audio.volume = .5
+        audio.volume = 0
         audio.playbackRate = .5
         audio.loop = true
 
@@ -63,7 +63,9 @@
 
             let ratio = (degrees + 40) / 80
             audio.volume = ratio < .05 ? 0 : ratio
-            audio.playbackRate = easeInCirc(ratio) * 2
+            audio.playbackRate = easeInCirc(Math.min(ratio,.5)) * 2
+
+            console.log(ratio)
 
             if(ratio > .75) {
                 if(!flashingInterval) flashingInterval = setInterval(()=>{

@@ -65,7 +65,7 @@
 
             let ratio = (degrees + 40) / 80
             audio.volume = easeInCubic(ratio)
-            audio.playbackRate = easeInCubic(ratio) * 2
+            audio.playbackRate = easeInCubic(ratio) * 1.5
 
             if(ratio > .75) {
                 if(!flashingInterval) flashingInterval = setInterval(()=>{

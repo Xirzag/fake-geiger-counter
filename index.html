@@ -63,7 +63,7 @@
 
             let ratio = (degrees + 40) / 80
             audio.volume = ratio < .05 ? 0 : ratio
-            audio.playbackRate = easeInCirc(Math.min(ratio,.5)) * 2
+            audio.playbackRate = Math.min(easeInCirc(Math.min(ratio,.5)) * 2, .75)
 
             console.log(ratio)
 

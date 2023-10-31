@@ -52,6 +52,8 @@
           audio.play()
         }
 
+        function easeInCubic(t) { return t*t*t }
+
         let flashingInterval
         document.addEventListener("touchmove", (event)=>{
             let y = event.touches[0].clientY
@@ -62,8 +64,8 @@
             aguja.style.transform = "rotate("+degrees+"deg)"
 
             let ratio = (degrees + 40) / 80
-            audio.volume = ratio
-            audio.playbackRate = ratio * 4
+            audio.volume = easeInCubic(ratio)
+            audio.playbackRate = easeInCubic(ratio) * 2
 
             if(ratio > .75) {
                 if(!flashingInterval) flashingInterval = setInterval(()=>{

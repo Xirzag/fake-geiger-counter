@@ -14,7 +14,7 @@
     <div class="container text-center">
         <div class="row">
           <div class="col">
-            <img id="counter" src="counter.png" class="w-100" />
+            <img id="counter" src="counter.png" class="w-100" onclick="plsMisterBrowserPlayAudio()" />
             <img id="aguja" src="aguja.png" />
           </div>
         </div>
@@ -48,6 +48,9 @@
             startinfPoint = event.touches[0].clientY
         })
 
+        function plsMisterBrowserPlayAudio() {
+          audio.play()
+        }
 
         let flashingInterval
         document.addEventListener("touchmove", (event)=>{

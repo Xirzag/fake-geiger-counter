@@ -63,9 +63,10 @@
 
             let ratio = (degrees + 40) / 80
             audio.volume = ratio < .05 ? 0 : ratio
-            audio.playbackRate = Math.min(easeInCirc(Math.min(ratio,.5)) * 2, .75)
+            let playbackRate = Math.max(ratio * 3, .5)
+            audio.playbackRate = playbackRate
 
-            console.log(ratio)
+            console.log(playbackRate)
 
             if(ratio > .75) {
                 if(!flashingInterval) flashingInterval = setInterval(()=>{

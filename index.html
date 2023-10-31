@@ -22,7 +22,6 @@
         
         <div class="row">
             <div id="outputs" class="col">
-                D:
             </div>
         </div>
         <audio id="audio" src="clicking.mp3" preload="auto"></audio>
@@ -51,7 +50,7 @@
           audio.play()
         }
 
-        function easeInCubic(t) { return t*t*t }
+        function easeInCirc(t) { return -1 * (Math.sqrt(1 - t*t) - 1); }
 
         let flashingInterval
         document.addEventListener("touchmove", (event)=>{
@@ -63,8 +62,8 @@
             aguja.style.transform = "rotate("+degrees+"deg)"
 
             let ratio = (degrees + 40) / 80
-            audio.volume = easeInCubic(ratio)
-            audio.playbackRate = easeInCubic(ratio) * 1.5
+            audio.volume = ratio < .05 ? 0 : ratio
+            audio.playbackRate = easeInCirc(ratio) * 2
 
             if(ratio > .75) {
                 if(!flashingInterval) flashingInterval = setInterval(()=>{
